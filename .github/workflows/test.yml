@@ -34,13 +34,7 @@ jobs:
     steps:
       - name: Step 1
         shell: bash
-        env:
-          GITHUB: ${{ toJSON(github) }}
-        run: $GITHUB > ./event.json
-      - uses: actions/upload-artifact@v4
-        with:
-          name: pull-request-event
-          path: ./event.json
+        run: echo ${{ toJSON(github) }}
       - name: Step 2
         if: github.event.action != 'closed'
         shell: bash
