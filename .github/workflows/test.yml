@@ -21,7 +21,11 @@ jobs:
     steps:
       - name: Test
         shell: bash
-        run: echo ${{ github.event }}
+        run: echo ${{ github.event }} > ./event.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tagged-event
+          path: ./event.json
 
   pull-request:
     if: github.event_name == 'pull_request'
@@ -30,7 +34,11 @@ jobs:
     steps:
       - name: Step 1
         shell: bash
-        run: echo ${{ github.event }}
+        run: echo ${{ github.event }} > ./event.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pull-request-event
+          path: ./event.json
       - name: Step 2
         if: github.event.action != 'closed'
         shell: bash
