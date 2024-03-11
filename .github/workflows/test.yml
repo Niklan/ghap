@@ -34,7 +34,9 @@ jobs:
     steps:
       - name: Step 1
         shell: bash
-        run: ${{ toJSON(github) }} > ./event.json
+        env:
+          GITHUB: ${{ toJSON(github) }}
+        run: $GITHUB > ./event.json
       - uses: actions/upload-artifact@v4
         with:
           name: pull-request-event
