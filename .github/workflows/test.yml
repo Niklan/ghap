@@ -21,7 +21,7 @@ jobs:
     steps:
       - name: Test
         shell: bash
-        run: echo ${{ github.event }} > ./event.json
+        run: ${{ github }} > ./event.json
       - uses: actions/upload-artifact@v4
         with:
           name: tagged-event
@@ -34,7 +34,7 @@ jobs:
     steps:
       - name: Step 1
         shell: bash
-        run: echo ${{ github.event }} > ./event.json
+        run: ${{ github }} > ./event.json
       - uses: actions/upload-artifact@v4
         with:
           name: pull-request-event
