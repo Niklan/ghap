@@ -19,9 +19,9 @@ jobs:
     name: Tagged
     runs-on: ubuntu-latest
     steps:
-      - name: Test
+      - name: Step 1
         shell: bash
-        run: ${{ toJSON(github) }} > ./event.json
+        run: echo "${{ toJSON(github) }}"
       - uses: actions/upload-artifact@v4
         with:
           name: tagged-event
