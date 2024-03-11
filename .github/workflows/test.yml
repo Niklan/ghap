@@ -21,4 +21,17 @@ jobs:
     steps:
       - name: Test
         shell: bash
-        run: echo "Hello, World!"
+        run: echo ${{ github.event }}
+
+  pull-request:
+    if: github.event_name == 'pull_request'
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step 1
+        shell: bash
+        run: echo ${{ github.event }}
+      - name: Step 2
+        if: github.event.action != 'closed'
+        shell: bash
+        run: echo "Not closed".
