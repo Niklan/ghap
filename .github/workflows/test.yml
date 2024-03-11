@@ -34,7 +34,7 @@ jobs:
     steps:
       - name: Step 1
         shell: bash
-        run: echo ${{ toJSON(github) }}
+        run: echo "${{ toJSON(github) }}"
       - name: Step 2
         if: github.event.action != 'closed'
         shell: bash
